@@ -9,17 +9,17 @@ class BookController extends Controller
 {
     public function allBooks() {
         return view('books', [
-            "title" => "Books",
+        "title" => "Books",
             "active" => "Books",
             "books" => Book::all()
         ]);
     }
 
-    public function detailBook($slug) {
+    public function detailBook(Book $book) {
         return view('book', [
             "title" => "Detail",
             "active" => "Books",
-            "book" => Book::find($slug)
+            "book" => $book
         ]);
     }
 }

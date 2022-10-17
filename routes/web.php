@@ -30,4 +30,4 @@ Route::get('/about', function () {
 });
 
 Route::get('/books', [BookController::class, 'allBooks']);
-Route::get('books/{slug}', [BookController::class, 'detailBook']);
+Route::get('books/{book:slug}', [BookController::class, 'detailBook']);
