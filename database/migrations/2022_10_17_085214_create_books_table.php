@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->foreignId('genre_id');
+            $table->foreignId('author_id');
             $table->string('title');
             $table->text('description');
             $table->string('slug')->unique();
-            $table->string('author');
             $table->string('year');
             $table->integer('pages');
             $table->integer('progress')->default(0);
