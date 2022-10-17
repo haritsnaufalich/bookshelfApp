@@ -22,10 +22,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/contact', function () {
-    return view('contact', [
-        "title" => "Contact",
-        "active" => "Contact"
+Route::get('/about', function () {
+    return view('about', [
+        "title" => "About",
+        "active" => "About"
     ]);
 });
 
