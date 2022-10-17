@@ -22,4 +22,12 @@ class BookController extends Controller
             "book" => $book
         ]);
     }
+
+    // public function genreBooks($genre) {
+    //     return view('books', [
+    //         "title" => "Genre",
+    //         "active" => "Books",
+    //         "books" => Book::where('genre_id', $genre)->get()
+    //     ]);
+    // }
 }
