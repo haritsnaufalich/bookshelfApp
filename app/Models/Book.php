@@ -13,6 +13,11 @@ class Book extends Model
         'id'
     ];
 
+    protected $with = [
+        'author',
+        'genre'
+    ];
+
     public function genre () {
         return $this->belongsTo(Genre::class);
     }

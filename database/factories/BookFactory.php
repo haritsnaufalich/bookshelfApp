@@ -21,7 +21,7 @@ class BookFactory extends Factory
             'genre_id' => fake()->numberBetween(1, 4),
             'author_id' => fake()->numberBetween(1, 6),
             'slug' => strtolower(str_replace(' ', '-', fake()->sentence(mt_rand(2, 5)))),
-            'description' => fake()->paragraph(30),
+            'description' => fake()->paragraph(mt_rand(6, 8)),
             'year' => fake()->year,
             'pages' => fake()->numberBetween(100, 600),
         ];

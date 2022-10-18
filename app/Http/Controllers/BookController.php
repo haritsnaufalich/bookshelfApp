@@ -11,7 +11,7 @@ class BookController extends Controller
         return view('books', [
         "title" => "All Books",
         "active" => "Books",
-        "books" => Book::with(['author', 'genre'])->latest()->get()
+        "books" => Book::latest()->get()
         ]);
     }
 
