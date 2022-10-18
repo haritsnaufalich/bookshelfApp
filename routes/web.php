@@ -2,6 +2,7 @@
 
 use App\Models\Book;
 use App\Models\Genre;
+use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
@@ -37,7 +38,7 @@ Route::get('/genres', function () {
     return view('genres', [
         "title" => "Book Genres",
         "active" => "Genres",
-        "genres" => Genre::all(),
+        "genres" => Genre::all()
     ]);
 });
 Route::get('/genres/{genre:slug}', function (Genre $genre) {
@@ -45,5 +46,12 @@ Route::get('/genres/{genre:slug}', function (Genre $genre) {
         "title" => $genre->name,
         "books" => $genre->books,
         "genre" => $genre->name
+    ]);
+});
+
+Route::get('/authors/{author:username}', function (Author $author) {
+    return view('genre', [
+        "title" => 'Author Books',
+        "books" => $author->books
     ]);
 });
