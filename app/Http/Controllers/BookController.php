@@ -9,16 +9,15 @@ class BookController extends Controller
 {
     public function allBooks() {
         return view('books', [
-        "title" => "Books",
-            "active" => "Books",
-            // "books" => Book::all()
-            "books" => Book::latest()->get()
+        "title" => "All Books",
+        "active" => "Books",
+        "books" => Book::with(['author', 'genre'])->latest()->get()
         ]);
     }
 
     public function detailBook(Book $book) {
         return view('book', [
-            "title" => "Detail",
+            "title" => "Detail Book : $book->title",
             "active" => "Books",
             "book" => $book
         ]);

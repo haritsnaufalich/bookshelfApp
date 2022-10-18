@@ -42,16 +42,15 @@ Route::get('/genres', function () {
     ]);
 });
 Route::get('/genres/{genre:slug}', function (Genre $genre) {
-    return view('genre', [
-        "title" => $genre->name,
-        "books" => $genre->books,
-        "genre" => $genre->name
+    return view('books', [
+        "title" => 'Book by Genre : ' . $genre->name,
+        "books" => $genre->books->load('author', 'genre')
     ]);
 });
 
 Route::get('/authors/{author:username}', function (Author $author) {
-    return view('genre', [
-        "title" => 'Author Books',
-        "books" => $author->books
+    return view('books', [
+        "title" => 'Book by Author : ' . $author->name,
+        "books" => $author->books->load('author', 'genre')
     ]);
 });

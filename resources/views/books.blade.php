@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
+  <h1 class="mb-3 font-bold text-md">{{ $title }}</h1>
   @foreach ($books as $book)
     <article class="mb-8">
       <h2 class="mb-2"><a class="font-bold" href="/books/{{ $book->slug }}">{{ $book->title }}</a></h2>
