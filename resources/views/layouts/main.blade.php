@@ -12,5 +12,6 @@
   <div class="container mx-auto my-8">
     @yield('container')
   </div>
+  @vite('resources/js/app.js')
 </body>
 </html>

@@ -19,7 +19,7 @@ class BookFactory extends Factory
         return [
             'title' => fake()->sentence(mt_rand(2, 5)),
             'genre_id' => fake()->numberBetween(1, 4),
-            'author_id' => fake()->numberBetween(1, 6),
+            'author_id' => fake()->numberBetween(1, 3),
             'slug' => strtolower(str_replace(' ', '-', fake()->sentence(mt_rand(2, 5)))),
             'description' => fake()->paragraph(mt_rand(6, 8)),
             'year' => fake()->year,
