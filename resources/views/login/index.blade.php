@@ -8,17 +8,29 @@
         {{ session('success') }}
       </div>
     @endif
+    @if(session()->has('loginError'))
+      <div class="p-4 mb-4 -mt-12 text-sm text-red-800 bg-red-200 rounded-lg" role="alert">
+        {{ session('loginError') }}
+      </div>
+    @endif
     <div class="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-800">
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 class="text-xl font-bold leading-tight tracking-tight md:text-xl text-gray-200">LOGIN</h1>
-        <form class="space-y-4 md:space-y-6" action="#">
+        <form class="space-y-4 md:space-y-6" action="/login" method="POST">
+          @csrf
           <div>
             <label for="username" class="block mb-2 text-sm font-medium text-gray-200">Username</label>
-            <input type="text" name="username" id="username" class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 border-2 border-gray-600 placeholder-gray-400 text-gray-800" placeholder="" required="">
+            <input type="text" name="username" id="username" class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 placeholder-gray-400 text-gray-800 @error('username') border-2 border-red-400 @enderror" placeholder="" required autofocus value="{{ old('username') }}">
+            @error('username')
+              <div class="text-red-400 text-transform: capitalize mt-1 text-sm">{{ $message }}</div>
+            @enderror
           </div>
           <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-200">Password</label>
-            <input type="password" name="password" id="password" placeholder="" class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 border-2 border-gray-600 placeholder-gray-400 text-gray-800" required="">
+            <input type="password" name="password" id="password" placeholder="" class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 placeholder-gray-400 text-gray-800 @error('password') border-2 border-red-400 @enderror" required>
+            @error('password')
+              <div class="text-red-400 text-transform: capitalize mt-1 text-sm">{{ $message }}</div>
+            @enderror
           </div>
           <div class="flex items-center justify-between">
             <a href="#" class="text-sm font-medium hover:underline text-gray-200">Forgot Password?</a>

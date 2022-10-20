@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,11 @@ Route::get('/authors', function () {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'loginIndex']);
-Route::get('/register', [RegisterController::class, 'registerIndex']);
+Route::get('/login', [LoginController::class, 'loginIndex'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'loginAuthenticate']);
+Route::post('/logout', [LoginController::class, 'logoutIndex']);
+
+Route::get('/register', [RegisterController::class, 'registerIndex'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'registerStore']);
+
+Route::get('/dashboard', [DashboardController::class, 'dashboardIndex'])->middleware('auth');

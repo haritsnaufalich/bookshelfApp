@@ -9,7 +9,7 @@
 </head>
 <body>
   @include('partials.navbar')
-  <div class="container mx-auto my-8">
+  <div class="container px-[24px] mx-auto my-8">
     @yield('container')
   </div>
   @vite('resources/js/app.js')
