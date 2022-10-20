@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Author::factory(3)->create();
-        Book::factory(15)->create();
+        Book::factory(21)->create();
 
         Genre::create([
             'name' => "Fantasy",

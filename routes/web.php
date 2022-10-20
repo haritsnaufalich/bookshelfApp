@@ -5,6 +5,8 @@ use App\Models\Genre;
 use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +51,6 @@ Route::get('/authors', function () {
         "authors" => Author::all()
     ]);
 });
+
+Route::get('/login', [LoginController::class, 'loginIndex']);
+Route::get('/register', [RegisterController::class, 'registerIndex']);
