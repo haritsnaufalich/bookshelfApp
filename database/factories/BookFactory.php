@@ -23,7 +23,8 @@ class BookFactory extends Factory
             'slug' => strtolower(str_replace(' ', '-', fake()->sentence(mt_rand(2, 5)))),
             'description' => fake()->paragraph(mt_rand(6, 8)),
             'year' => fake()->year,
-            'pages' => fake()->numberBetween(100, 600),
+            'pages' => fake()->numberBetween(180, 600),
+            'progress' => fake()->numberBetween(0, 160)
         ];
     }
 }

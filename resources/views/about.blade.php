@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-  <h1 class="mb-3 font-bold text-xl">{{ $title }}</h1>
+  <h1 class="mb-3 font-bold text-xl text-gray-800">{{ $title }}</h1>
   <p>Harits Naufal Ichsan</p>
   <p>203040077</p>
   <p class="mb-2">haritsnaufalich@outlook.com</p>

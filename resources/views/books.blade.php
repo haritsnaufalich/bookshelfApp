@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-  <h1 class="mb-3 font-bold text-xl">{{ $title }}</h1>
+  <h1 class="mb-3 font-bold text-xl text-gray-800">{{ $title }}</h1>
 
   <div class="flex flex-col md:flex-row items-center md:justify-between">
     <div class="w-full md:w-1/3 md:mb-0">

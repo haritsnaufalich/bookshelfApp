@@ -5,9 +5,9 @@ use App\Models\Genre;
 use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\DashboardBookController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,4 +60,12 @@ Route::post('/logout', [LoginController::class, 'logoutIndex']);
 Route::get('/register', [RegisterController::class, 'registerIndex'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'registerStore']);
 
-Route::get('/dashboard', [DashboardController::class, 'dashboardIndex'])->middleware('auth');
+Route::get('/dashboard', function () {
+    return view('dashboard.index', [
+        "title" => "Dashboard",
+        "active" => "Dashboard",
+        "books" => Book::all()
+    ]);
+})->middleware('auth');
+
+Route::resource('dashboard/books', DashboardBookController::class)->middleware('auth');

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-  <h1 class="mb-3 font-bold text-lg">{{ $title }}</h1>
+  <h1 class="mb-3 font-bold text-lg text-gray-800">{{ $title }}</h1>
   <article class="flex flex-col md:flex-row gap-4">
     <div class="md:w-1/3">
       <img src="https://source.unsplash.com/1600x900?{{ $book->genre->name }}" alt="{{ $book->genre->name }}" class="rounded-md">

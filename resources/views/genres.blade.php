@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-  <h1 class="-mb-3 font-bold text-xl">{{ $title }}</h1>
+  <h1 class="-mb-3 font-bold text-xl text-gray-800">{{ $title }}</h1>
   @foreach ($genres as $genre)
   <div class="my-6 flex flex-col md:flex-row items-center md:items-start md:space-x-4 space-y-4 md:space-y-0">
     <div class="w-full md:w-1/3">
