@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('slug')->unique();
-            $table->string('year');
-            $table->integer('pages');
+            $table->string('year')->default(mt_rand(1900, 2021));
+            $table->integer('pages')->default(mt_rand(200, 500));
             $table->integer('progress')->default(0);
             $table->timestamps();
         });

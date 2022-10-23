@@ -68,4 +68,5 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
+Route::get('/dashboard/books/checkSlug', [DashboardBookController::class, 'checkSlug'])->middleware('auth');
 Route::resource('dashboard/books', DashboardBookController::class)->middleware('auth');
