@@ -4,6 +4,12 @@
 
   <h1 class="mb-5 font-bold text-xl text-gray-800">My Books</h1>
 
+  @if(session()->has('success'))
+    <div class="p-4 mb-[26px] -mt-[10px] text-sm text-green-800 bg-green-200 rounded-lg" role="alert">
+      {{ session('success') }}
+    </div>
+  @endif
+
   <a href="/dashboard/books/create" class="bg-gray-800 hover:bg-gray-600 text-gray-200 py-2 px-4 rounded-md">Add Books</a>
   <div class="mt-6 overflow-x-auto relative shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-400">

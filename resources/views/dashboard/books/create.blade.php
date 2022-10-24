@@ -9,7 +9,7 @@
           @csrf
           <div>
             <label for="title" class="block mb-2 text-sm font-medium text-gray-200">Book Title</label>
-            <input type="text" name="title" id="title" class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 placeholder-gray-400 text-gray-800 @error('title') border-2 border-red-400 @enderror" placeholder="" required value="{{ old('title') }}">
+            <input type="text" name="title" id="title" class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 placeholder-gray-400 text-gray-800 @error('title') border-2 border-red-400 @enderror" placeholder="" required value="{{ old('title') }}" autofocus>
             @error('title')
               <div class="text-red-400 text-transform: capitalize mt-1 text-sm">{{ $message }}</div>
             @enderror
@@ -23,10 +23,14 @@
           </div>
           <div>
             <label for="genre_id" class="block mb-2 text-sm font-medium text-gray-200">Genre</label>
-            <select name="genre_id" id="genre_id" placeholder="" required class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 placeholder-gray-400 text-gray-800 @error('name') border-2 border-red-400 @enderror" value="{{ old('genre_id') }}">
+            <select name="genre_id" id="genre_id" placeholder="" required class="sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 placeholder-gray-400 text-gray-800 @error('name') border-2 border-red-400 @enderror">
               <option selected>Choose a Genre</option>
               @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                @if(old('genre_id') == $genre->id)
+                  <option value="{{ $genre->id }}" selected>{{ $genre->name }}</option>
+                @else
+                  <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                @endif
               @endforeach
             </select>
             @error('genre_id')
@@ -41,7 +45,7 @@
               <div class="text-red-400 text-transform: capitalize mt-1 text-sm">{{ $message }}</div>
             @enderror
           </div>
-          <button type="submit" class="w-full text-gray-200 font-semibold rounded-lg text-sm px-5 py-2.5 text-center border-2 border-gray-600 bg-gray-600 focus:ring-gray-800">Register</button>
+          <button type="submit" class="w-full text-gray-200 font-semibold rounded-lg text-sm px-5 py-2.5 text-center border-2 border-gray-600 bg-gray-600 focus:ring-gray-800">Sumbit</button>
         </form>
       </div>
     </div>
