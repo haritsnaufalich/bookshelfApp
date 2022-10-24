@@ -5,7 +5,7 @@
   <h1 class="mb-5 font-bold text-xl text-gray-800">My Books</h1>
 
   @if(session()->has('success'))
-    <div class="p-4 mb-[26px] -mt-[10px] text-sm text-green-800 bg-green-200 rounded-lg" role="alert">
+    <div class="p-4 mb-[24px] -mt-[10px] text-sm text-green-800 bg-green-200 rounded-lg" role="alert">
       {{ session('success') }}
     </div>
   @endif
@@ -49,8 +49,12 @@
             </td>
             <td class="py-4 px-6 justify-center justify-items-center flex">
               <span class="mx-1.5 font-medium text-green-400 hover:underline"><a href="/dashboard/books/{{ $book->slug }}"><i class="fa-regular fa-eye"></i></a></span>
-              <span class="mx-1.5 font-medium text-orange-400 hover:underline"><a href=""><i class="fa-solid fa-pen"></i></a></span>
-              <span class="mx-1.5 font-medium text-red-600 hover:underline"><a href=""><i class="fa-solid fa-trash-can"></i></a></span>
+              <span class="mx-1.5 font-medium text-orange-400 hover:underline"><a href="/dashboard/books/{{ $book->slug }}/edit"><i class="fa-solid fa-pen"></i></a></span>
+              <form action="/dashboard/books/{{ $book->slug }}" method="POST">
+                @method('delete')
+                @csrf
+                <button class="mx-1.5 font-medium text-red-600 hover:underline" onclick="return confirm('Are u Sure?')"><i class="fa-solid fa-trash-can"></i></button>
+              </form>
             </td>
           </tr>
         @endforeach
