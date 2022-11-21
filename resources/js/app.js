@@ -16,3 +16,17 @@ title.addEventListener('change', function() {
         .then(response => response.json())
         .then(data => slug.value = data.slug)
 });
+
+// Preview Image
+const image = document.querySelector('#image');
+const preview = document.querySelector('#preview');
+
+image.addEventListener('change', function() {
+    const file = new FileReader();
+    file.readAsDataURL(image.files[0]);
+
+    file.onload = function(e) {
+        preview.src = e.target.result;
+        preview.classList.remove('hidden');
+    }
+});

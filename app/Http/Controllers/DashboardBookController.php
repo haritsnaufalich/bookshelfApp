@@ -45,13 +45,18 @@ class DashboardBookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:books|max:255',
             'genre_id' => 'required',
+            'image' => 'image|file|max:2048',
             'description' => 'required'
         ]);
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('bookImages');
+        }
 
         $validatedData['author_id'] = auth()->user()->id;
 

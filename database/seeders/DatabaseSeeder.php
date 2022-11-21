@@ -17,6 +17,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Author::create([
+            'name' => "Harits Naufal",
+            'username' => "haritsnaufal",
+            'email' => "haritsnaufalich@outlook.com",
+            'password' => bcrypt("password")
+        ]);
+
         Author::factory(3)->create();
         Book::factory(21)->create();
 

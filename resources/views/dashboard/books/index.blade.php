@@ -47,7 +47,7 @@
             <td class="py-4 px-6 text-center text-gray-200">
               {{ $book->progress }} / {{ $book->pages }}
             </td>
-            <td class="py-4 px-6 justify-center justify-items-center flex">
+            <td class="py-4 px-6 justify-center flex">
               <span class="mx-1.5 font-medium text-green-400 hover:underline"><a href="/dashboard/books/{{ $book->slug }}"><i class="fa-regular fa-eye"></i></a></span>
               <span class="mx-1.5 font-medium text-orange-400 hover:underline"><a href="/dashboard/books/{{ $book->slug }}/edit"><i class="fa-solid fa-pen"></i></a></span>
               <form action="/dashboard/books/{{ $book->slug }}" method="POST">
