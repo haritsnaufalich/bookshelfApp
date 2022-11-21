@@ -19,6 +19,12 @@
             <li>
               <a href="/dashboard/books" class="block py-2 px-4 text-md hover:text-gray-100">My Books</a>
             </li>
+            {{-- If Admin show This, Else Hidden --}}
+            @can('isAdmin')
+              <li>
+                <a href="/dashboard/genres" class="block py-2 px-4 text-md hover:text-gray-100">Genres</a>
+              </li>
+            @endcan
           </ul>
           <div class="py-1">
             <form action="/logout" method="POST">

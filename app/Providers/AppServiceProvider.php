@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Author;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Gate::define('isAdmin', function(Author $user) {
+            return $user->isAdmin;
+        });
     }
 }

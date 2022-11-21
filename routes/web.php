@@ -8,6 +8,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardBookController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminGenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,4 +70,6 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 Route::get('/dashboard/books/checkSlug', [DashboardBookController::class, 'checkSlug'])->middleware('auth');
-Route::resource('dashboard/books', DashboardBookController::class)->middleware('auth');
+Route::resource('/dashboard/books', DashboardBookController::class)->middleware('auth');
+
+Route::resource('/dashboard/genres', AdminGenreController::class)->except('show')->middleware('isAdmin');
