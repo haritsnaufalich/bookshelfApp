@@ -5,7 +5,7 @@
     <div class="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-800">
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 class="text-xl font-bold leading-tight tracking-tight md:text-xl text-gray-200">EDIT BOOKS</h1>
-        <form class="space-y-4 md:space-y-6" action="/dashboard/books/{{ $book->slug }}" method="POST">
+        <form class="space-y-4 md:space-y-6" action="/dashboard/books/{{ $book->slug }}" method="POST" enctype="multipart/form-data">
           @method('put')
           @csrf
           <div>
@@ -38,6 +38,22 @@
               <div class="text-red-400 text-transform: capitalize mt-1 text-sm">{{ $message }}</div>
             @enderror
           </div>
+
+          {{-- Image Input with Preview --}}
+          <div class="flex flex-col">
+            <label for="image" class="block mb-2 text-sm font-medium text-gray-200">Image</label>
+            <input type="hidden" name="oldImage" value="{{ $book->image }}">
+            <input type="file" name="image" id="image" class="capitalize sm:text-sm rounded-lg block w-full p-2.5 bg-gray-300 placeholder-gray-400 text-gray-800 @error('image') border-2 border-red-400 @enderror" placeholder="" required value="{{ old('image') }}">
+            @if ($book->image)
+              <img src="{{ asset('storage/' . $book->image) }}" alt="" id="preview" class="w-1/2 mt-2">
+            @else
+              <img src="" alt="" id="preview" class="hidden w-1/2 mt-2">
+            @endif
+            @error('image')
+              <div class="text-red-400 text-transform: capitalize mt-1 text-sm">{{ $message }}</div>
+            @enderror
+          </div>
+
           {{-- Text Box --}}
           <div>
             <label for="description" class="block mb-2 text-sm font-medium text-gray-200">Description</label>

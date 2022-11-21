@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Genre;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardBookController extends Controller
 {
@@ -108,15 +109,23 @@ class DashboardBookController extends Controller
         $rulesUpdate = [
             'title' => 'required|max:255',      
             'genre_id' => 'required',
+            'image' => 'image|file|max:2048',
             'description' => 'required'
         ];
 
         if($request->slug != $book->slug) {
             $rulesUpdate['slug'] = 'required|unique:books';
         }
-
+        
         $validatedData = $request->validate($rulesUpdate);
         
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('bookImages');
+        }
+
         $validatedData['author_id'] = auth()->user()->id;
 
         Book::where('id', $book->id)->update($validatedData);
@@ -132,6 +141,10 @@ class DashboardBookController extends Controller
      */
     public function destroy(Book $book)
     {
+        if($book->image) {
+            Storage::delete($book->image);
+        }
+
         Book::destroy($book->id);
 
         return redirect('/dashboard/books')->with('success', 'Book has Been Deleted');
